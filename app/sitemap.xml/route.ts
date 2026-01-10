@@ -2,7 +2,7 @@ import { projectsData } from "@/lib/projectsData";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://leyson.netlify.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://raymartleyson-2026.vercel.app";
 
   const urls = [
     { url: `${baseUrl}/`, priority: 1.0 },
