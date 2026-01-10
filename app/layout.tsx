@@ -46,9 +46,9 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "Person",
-                  "@id": "https://leyson.netlify.app/#person",
+                  "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://raymartleyson-2026.vercel.app"}/#person`,
                   "name": "Raymart Leyson",
-                  "url": "https://leyson.netlify.app/",
+                  "url": process.env.NEXT_PUBLIC_SITE_URL || "https://raymartleyson-2026.vercel.app",
                   "sameAs": [
                     "https://github.com/Raymart-Leyson",
                     "https://www.linkedin.com/in/raymart-leyson"
@@ -61,12 +61,12 @@ export default function RootLayout({
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://leyson.netlify.app/#website",
-                  "url": "https://leyson.netlify.app/",
+                  "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://raymartleyson-2026.vercel.app"}/#website`,
+                  "url": process.env.NEXT_PUBLIC_SITE_URL || "https://raymartleyson-2026.vercel.app",
                   "name": "Raymart Leyson Portfolio",
                   "inLanguage": "en-US",
                   "publisher": {
-                    "@id": "https://leyson.netlify.app/#person"
+                    "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://raymartleyson-2026.vercel.app"}/#person`
                   }
                 }
               ]
