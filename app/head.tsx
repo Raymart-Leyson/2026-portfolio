@@ -7,6 +7,7 @@ export default function Head() {
 
   return (
     <>
+      <meta name="google-site-verification" content="8fXwD2VFXO5LjCFYBYqyWZQBX8Mtb-JcNTyo0Zd1YSI" />
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content="freelance full stack developer, Next.js developer, React developer, Cebu developer, remote developer" />
