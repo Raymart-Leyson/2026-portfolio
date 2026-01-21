@@ -178,6 +178,27 @@ export const projectsData: Project[] = [
     status: "beta",
     featured: false,
   },
+  {
+    id: "6aaeqy-shopify",
+    title: "AlphaBeast Peptides Shopify Store",
+    description: "E-commerce storefront for AlphaBeast Peptides built on Shopify. Features product listings, shopping cart functionality, and secure checkout process to facilitate online sales of peptide products.",
+    category: "E-commerce",
+    tags: ["Shopify", "E-commerce", "Storefront"],
+    link: "https://6aaeqy-az.myshopify.com",
+    status: "beta",
+    featured: false,
+  },
+  {
+    id: "morosa-construction",
+    title: "Morosa Construction",
+    description: "Landing page for Morosa Construction showcasing services, past projects, contact details, and company information.",
+    category: "Landing Page",
+    tags: ["Next.js", "Vercel", "Landing Page", "Construction"],
+    link: "https://morosa-construction-opc.vercel.app",
+    status: "beta",
+    featured: false,
+  },
+  
 ];
 
 // Helper functions
