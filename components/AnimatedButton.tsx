@@ -29,12 +29,12 @@ export default function AnimatedButton({
   disabled = false,
   type = "button",
 }: AnimatedButtonProps) {
-  const baseClasses = "relative px-8 py-4 rounded-full font-semibold transition-all overflow-hidden";
-  
+  const baseClasses = "relative px-8 py-4 rounded-xl font-bold transition-all border-4 border-border shadow-sticker hover:-translate-y-1 hover:shadow-sticker-lg active:translate-y-0 active:shadow-sticker-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none";
+
   const variantClasses = {
-    primary: "bg-gradient-to-r from-purple-600 to-pink-600 text-white",
-    secondary: "bg-white/10 backdrop-blur-sm text-white border border-white/20",
-    ghost: "bg-transparent text-white border border-white/30",
+    primary: "bg-accent-1 text-foreground",
+    secondary: "bg-accent-2 text-foreground",
+    ghost: "bg-white text-foreground",
   };
 
   const Component = href ? motion.a : motion.button;
@@ -43,36 +43,12 @@ export default function AnimatedButton({
   return (
     <Component
       {...props}
-      className={`${baseClasses} ${variantClasses[variant]} ${className} ${
-        disabled ? "opacity-50 cursor-not-allowed" : ""
-      }`}
-      initial={{ scale: 1 }}
-      whileHover={!disabled ? { scale: 1.05 } : undefined}
-      whileTap={!disabled ? { scale: 0.95 } : undefined}
-      transition={{ duration: 0.2 }}
+      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      whileTap={!disabled ? { scale: 0.98 } : undefined}
     >
-      {/* Glow effect */}
-      {withGlow && (
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 blur-xl"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileHover={{ opacity: 0.6, scale: 1.2 }}
-          transition={{ duration: 0.3 }}
-        />
-      )}
-      
-      {/* Content */}
       <span className="relative z-10 flex items-center justify-center gap-2">
         {children}
       </span>
-      
-      {/* Shine effect on hover */}
-      <motion.div
-        className="absolute inset-0 -left-full bg-gradient-to-r from-transparent via-white/20 to-transparent"
-        initial={{ left: "-100%" }}
-        whileHover={{ left: "100%" }}
-        transition={{ duration: 0.6 }}
-      />
     </Component>
   );
 }

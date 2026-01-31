@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import PageLoader from "@/components/PageLoader";
-import AnimatedBackground from "@/components/AnimatedBackground";
-import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -74,8 +72,6 @@ export default function RootLayout({
           }}
         />
         <PageLoader />
-        <AnimatedBackground />
-        <Navbar />
         {children}
       </body>
     </html>

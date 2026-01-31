@@ -1,19 +1,50 @@
 @import "tailwindcss";
 
-/* CSS Variables */
+/* Creamy Cartoon Design Tokens */
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  /* Base Colors */
+  --background: #FAF8EF;
+  /* Creamy warm beige */
+  --surface: #FFFFFF;
+  /* Pure white surface */
+  --foreground: #222222;
+  /* High contrast black */
+  --border: #000000;
+  /* Bold black lines */
+
+  /* Accents */
+  --accent-1: #FF9AA2;
+  /* Melon */
+  --accent-2: #C7CEEA;
+  /* Periwinkle */
+  --accent-3: #FFDAC1;
+  /* Peach */
+
+  /* Measurements */
+  --border-width-thick: 4px;
+  /* standard thick border */
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
+  --color-border-main: var(--border);
+
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+
+  /* Cartoon Shadows */
+  --shadow-sticker: 4px 4px 0px 0px var(--border);
+  --shadow-sticker-lg: 6px 6px 0px 0px var(--border);
+  --shadow-sticker-sm: 2px 2px 0px 0px var(--border);
 }
 
-/* Dark mode is the default */
+/* Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -27,24 +58,28 @@ html {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
+  border-left: 2px solid var(--border);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #9333ea 0%, #ec4899 100%);
-  border-radius: 5px;
+  background: var(--accent-1);
+  border: 2px solid var(--border);
+  border-radius: 99px;
+  box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #a855f7 0%, #f472b6 100%);
+  background: var(--accent-2);
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -57,35 +92,30 @@ html {
 
 /* Selection color */
 ::selection {
-  background: rgba(147, 51, 234, 0.3);
-  color: var(--foreground);
+  background: var(--accent-2);
+  color: var(--border);
 }
 
-/* Remove default focus outline and add custom one */
+/* Custom Focus Outline */
 *:focus-visible {
-  outline: 2px solid #9333ea;
+  outline: 3px solid var(--border);
   outline-offset: 2px;
 }
 
-/* Glassmorphism utility */
+/* Glass/Card Utility - Updated for Cartoon Feel */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border: var(--border-width-thick) solid var(--border);
+  backdrop-filter: blur(4px);
 }
 
-/* Light theme adjustments for glass */
-html[data-theme="light"] .glass {
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Gradient text utility */
+/* Gradient text utility - optional/updated */
 .gradient-text {
-  background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
+  background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Add stroke for cartoon feel? Maybe later */
 }
 
 /* Hide scrollbar but keep functionality */
@@ -98,3 +128,52 @@ html[data-theme="light"] .glass {
   display: none;
 }
 
+/* Cartoon Utilities */
+.cartoon-border {
+  border: var(--border-width-thick) solid var(--border);
+}
+
+.cartoon-card {
+  background-color: var(--surface);
+  border: var(--border-width-thick) solid var(--border);
+  box-shadow: var(--shadow-sticker);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cartoon-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-sticker-lg);
+}
+
+/* Sticker Effect: White rim + Shadow */
+.sticker {
+  background-color: var(--surface);
+  border: var(--border-width-thick) solid var(--border);
+  box-shadow:
+    0 0 0 4px var(--surface),
+    /* White rim */
+    6px 6px 0px 4px rgba(0, 0, 0, 0.1);
+  /* Soft shadow beyond rim */
+}
+
+.cartoon-button {
+  background-color: var(--accent-1);
+  color: var(--border);
+  border: var(--border-width-thick) solid var(--border);
+  box-shadow: var(--shadow-sticker-sm);
+  font-weight: bold;
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cartoon-button:hover {
+  background-color: var(--accent-2);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-sticker);
+}
+
+.cartoon-button:active {
+  transform: translate(0px, 0px);
+  box-shadow: 0px 0px 0px 0px var(--border);
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 import { useState } from "react";
 import { useIsMobile } from "@/components/hooks/useIsMobile";
@@ -34,37 +34,45 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useIsMobile();
+  const shouldReduceMotion = useReducedMotion();
+
+  // Animation variants
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: index * 0.1, duration: 0.5, ease: "easeOut" }
+    }
+  };
 
   return (
     <motion.div
-      variants={fadeInUp}
+      variants={cardVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ delay: index * 0.1 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="group relative"
+      viewport={{ once: true, margin: "-50px" }}
+      className="group relative h-full flex flex-col"
     >
       <motion.div
-        initial={{ scale: 1, y: 0 }}
-        whileHover={{ scale: isMobile ? 1.01 : 1.02, y: isMobile ? -4 : -8 }}
-        transition={{ duration: isMobile ? 0.25 : 0.3, ease: [0.22, 1, 0.36, 1] as any }}
-        className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 p-6 h-full"
+        whileHover={!shouldReduceMotion ? { y: -8, scale: 1.02 } : {}}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        className={`
+            relative flex flex-col h-full
+            rounded-2xl bg-white 
+            border-4 border-border-main 
+            shadow-sticker hover:shadow-sticker-lg 
+            transition-all duration-300
+            p-0 overflow-hidden
+        `}
       >
-        {/* Glow effect on hover */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 opacity-0"
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-        />
-
         {/* Image preview (if provided) */}
         {image && (
-          <div className="relative h-48 mb-4 rounded-lg overflow-hidden bg-white/5">
+          <div className="relative h-48 w-full border-b-4 border-border-main bg-gray-100 overflow-hidden">
             <motion.div
-              animate={{ scale: isHovered ? (isMobile ? 1.03 : 1.1) : 1 }}
-              transition={{ duration: isMobile ? 0.5 : 0.6, ease: [0.22, 1, 0.36, 1] as any }}
+              animate={isHovered && !shouldReduceMotion ? { scale: 1.05 } : { scale: 1 }}
+              transition={{ duration: 0.4 }}
               className="w-full h-full"
             >
               <Image
@@ -78,40 +86,35 @@ export default function ProjectCard({
         )}
 
         {/* Content */}
-        <div className="relative z-10">
-          <h3 className="text-2xl font-bold mb-3 text-white">{title}</h3>
-          <p className="text-gray-400 mb-4 leading-relaxed">{description}</p>
+        <div className="p-6 flex flex-col flex-grow">
+          <h3 className="text-2xl font-bold mb-3 text-foreground">{title}</h3>
+          <p className="text-gray-800 font-medium mb-6 leading-relaxed flex-grow">{description}</p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-6">
             {tags.map((tag, i) => (
-              <motion.span
+              <span
                 key={tag}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 + i * (isMobile ? 0.03 : 0.05) }}
-                viewport={{ once: true }}
-                className="px-3 py-1 rounded-full bg-white/10 text-sm text-gray-300 border border-white/10"
+                className="px-3 py-1 rounded-full bg-accent-2/30 text-xs font-bold text-foreground border-2 border-accent-2"
               >
                 {tag}
-              </motion.span>
+              </span>
             ))}
           </div>
 
           {/* Links */}
           {(link || github) && (
-            <div className="flex gap-3 pt-4 border-t border-white/10">
+            <div className="flex gap-4 pt-4 border-t-2 border-border-main/10 mt-auto">
               {link && !licenseRequired && (
-                <motion.a
+                <a
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1"
-                  whileHover={{ x: isMobile ? 2 : 3 }}
-                  transition={{ duration: isMobile ? 0.15 : 0.2 }}
+                  className="text-sm font-bold text-foreground hover:text-accent-1 transition-colors flex items-center gap-1 group/link"
                 >
-                  View Project →
-                </motion.a>
+                  View Project
+                  <span className="inline-block transition-transform group-hover/link:translate-x-1">→</span>
+                </a>
               )}
 
               {link && licenseRequired && (
@@ -119,30 +122,19 @@ export default function ProjectCard({
               )}
 
               {github && (
-                <motion.a
+                <a
                   href={github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-400 hover:text-gray-300 transition-colors flex items-center gap-1"
-                  whileHover={{ x: isMobile ? 2 : 3 }}
-                  transition={{ duration: isMobile ? 0.15 : 0.2 }}
+                  className="text-sm font-bold text-gray-500 hover:text-foreground transition-colors flex items-center gap-1 group/git"
                 >
-                  GitHub →
-                </motion.a>
+                  GitHub
+                  <span className="inline-block transition-transform group-hover/git:translate-x-1">→</span>
+                </a>
               )}
             </div>
           )}
         </div>
-
-        {/* Corner accent */}
-        <motion.div
-          className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-600/20 to-transparent rounded-bl-full"
-          animate={{
-            opacity: isHovered ? (isMobile ? 0.8 : 1) : 0,
-            scale: isHovered ? (isMobile ? 0.9 : 1) : 0.5,
-          }}
-          transition={{ duration: isMobile ? 0.3 : 0.4 }}
-        />
       </motion.div>
     </motion.div>
   );
@@ -155,7 +147,7 @@ function LicenseButton({ url, title }: { url: string; title?: string }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="text-sm text-yellow-400 hover:text-yellow-300 transition-colors flex items-center gap-1"
+        className="text-sm font-bold text-yellow-600 hover:text-yellow-500 transition-colors flex items-center gap-1"
       >
         Enter License →
       </button>
