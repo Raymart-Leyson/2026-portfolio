@@ -32,7 +32,7 @@ export default function ExtrasSection() {
                             initial="hidden"
                             animate="visible"
                             exit={{ opacity: 0, y: -20 }}
-                            className="grid grid-cols-2 gap-8 w-full max-w-2xl"
+                            className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl"
                         >
                             {/* Music Launcher */}
                             <motion.button

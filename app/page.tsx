@@ -54,7 +54,7 @@ export default function Home() {
         {/* Main Desktop Window */}
         <WindowFrame
           title={`Portfolio.exe - [${activeSection.toUpperCase()}]`}
-          className="w-full max-w-6xl h-[85vh] flex flex-col shadow-2xl z-10"
+          className="w-full max-w-6xl h-[85svh] flex flex-col shadow-2xl z-10"
         >
           {/* Scrollable Content Area */}
           <div
