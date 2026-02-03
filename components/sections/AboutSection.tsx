@@ -84,6 +84,7 @@ export default function AboutSection() {
                             Computer Science graduate from Cebu Institute of Technology University with professional experience at Accenture.
                             My portfolio spans diverse domains from AI-powered learning tools to secure payment platforms.
                             I deeply value clean code, scalable architecture, and user-centric design.
+                            I also bring experience in video editing, allowing me to bridge the gap between technical development and creative media.
                         </p>
                     </div>
                 </motion.div>

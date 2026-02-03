@@ -12,6 +12,7 @@ const skills = [
     { name: "OpenAI / AI Integration", level: 82 },
     { name: "Payment APIs / Authentication", level: 87 },
     { name: "SEO / Web Performance", level: 84 },
+    { name: "Video Editing / Content Creation", level: 85 },
 ];
 
 export default function SkillsSection() {
