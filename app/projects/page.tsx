@@ -12,8 +12,8 @@ export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const categories = ["All", ...getAllCategories()];
 
-  const filteredProjects = selectedCategory === "All" 
-    ? projectsData 
+  const filteredProjects = selectedCategory === "All"
+    ? projectsData
     : projectsData.filter(p => p.category === selectedCategory);
 
   const stats = {
@@ -28,7 +28,7 @@ export default function ProjectsPage() {
         {/* Header */}
         <section className="px-6 mb-16">
           <div className="max-w-6xl mx-auto">
-            <Link href="/" className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 group">
+            <Link href="/" className="inline-flex items-center text-gray-500 hover:text-foreground font-bold mb-8 group transition-colors">
               <motion.span
                 whileHover={{ x: -5 }}
                 className="mr-2"
@@ -45,17 +45,17 @@ export default function ProjectsPage() {
             >
               <motion.h1
                 variants={fadeInUp}
-                className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                className="text-5xl md:text-7xl font-bold mb-6 text-foreground"
               >
                 All Projects
               </motion.h1>
-              
+
               <motion.p
                 variants={fadeInUp}
-                className="text-xl text-gray-400 max-w-3xl mb-8"
+                className="text-xl text-gray-700 font-medium max-w-3xl mb-8 leading-relaxed"
               >
-                A comprehensive collection of my work spanning AI tools, business applications, 
-                landing pages, and enterprise APIs. Each project demonstrates expertise in full-stack 
+                A comprehensive collection of my work spanning AI tools, business applications,
+                landing pages, and enterprise APIs. Each project demonstrates expertise in full-stack
                 development, modern frameworks, and production-ready solutions.
               </motion.p>
 
@@ -64,17 +64,17 @@ export default function ProjectsPage() {
                 variants={fadeInUp}
                 className="grid grid-cols-3 gap-4 max-w-2xl"
               >
-                <div className="p-4 rounded-lg bg-white/5 border border-white/10 text-center">
-                  <div className="text-3xl font-bold text-purple-400">{stats.total}</div>
-                  <div className="text-sm text-gray-400">Total Projects</div>
+                <div className="p-4 rounded-xl bg-white border-4 border-border shadow-sticker text-center">
+                  <div className="text-3xl font-black text-accent-1">{stats.total}</div>
+                  <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Total Projects</div>
                 </div>
-                <div className="p-4 rounded-lg bg-white/5 border border-white/10 text-center">
-                  <div className="text-3xl font-bold text-green-400">{stats.live}</div>
-                  <div className="text-sm text-gray-400">Live Projects</div>
+                <div className="p-4 rounded-xl bg-white border-4 border-border shadow-sticker text-center">
+                  <div className="text-3xl font-black text-green-500">{stats.live}</div>
+                  <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Live Projects</div>
                 </div>
-                <div className="p-4 rounded-lg bg-white/5 border border-white/10 text-center">
-                  <div className="text-3xl font-bold text-blue-400">{stats.categories}</div>
-                  <div className="text-sm text-gray-400">Categories</div>
+                <div className="p-4 rounded-xl bg-white border-4 border-border shadow-sticker text-center">
+                  <div className="text-3xl font-black text-accent-3">{stats.categories}</div>
+                  <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Categories</div>
                 </div>
               </motion.div>
             </motion.div>
@@ -95,11 +95,10 @@ export default function ProjectsPage() {
                   onClick={() => setSelectedCategory(category)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all ${
-                    selectedCategory === category
-                      ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-                      : "bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10"
-                  }`}
+                  className={`px-6 py-3 rounded-xl font-bold border-2 transition-all shadow-sm ${selectedCategory === category
+                      ? "bg-accent-1 text-white border-accent-1 shadow-md"
+                      : "bg-white text-gray-600 border-border hover:border-accent-1 hover:text-accent-1"
+                    }`}
                 >
                   {category}
                 </motion.button>
@@ -118,14 +117,14 @@ export default function ProjectsPage() {
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {filteredProjects.map((project, index) => (
-                <div key={project.id} className="relative">
+                <div key={project.id} className="relative h-full">
                   {/* Status Badge */}
                   {project.status === "live" && (
                     <motion.div
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1 }}
-                      className="absolute -top-3 -right-3 z-10 px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full"
+                      className="absolute -top-3 -right-3 z-30 px-3 py-1 bg-green-500 border-2 border-border text-white text-xs font-black uppercase tracking-wider rounded-lg shadow-sm transform rotate-3"
                     >
                       LIVE
                     </motion.div>
@@ -135,12 +134,12 @@ export default function ProjectsPage() {
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1 }}
-                      className="absolute -top-3 -right-3 z-10 px-3 py-1 bg-yellow-600 text-white text-xs font-bold rounded-full"
+                      className="absolute -top-3 -right-3 z-30 px-3 py-1 bg-yellow-400 border-2 border-border text-black text-xs font-black uppercase tracking-wider rounded-lg shadow-sm transform rotate-3"
                     >
                       BETA
                     </motion.div>
                   )}
-                  
+
                   <ProjectCard
                     title={project.title}
                     description={project.description}
@@ -161,7 +160,9 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1 }}
                 className="text-center py-20"
               >
-                <p className="text-gray-400 text-xl">No projects found in this category.</p>
+                <div className="text-6xl mb-4">📂</div>
+                <p className="text-gray-500 font-bold text-xl">No projects found in this category.</p>
+                <p className="text-gray-400 mt-2">Try selecting a different filter.</p>
               </motion.div>
             )}
           </div>
@@ -173,18 +174,18 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center p-12 rounded-2xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 border border-purple-500/30"
+            className="max-w-4xl mx-auto text-center p-12 rounded-3xl bg-accent-2 border-4 border-border shadow-sticker"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-md">
               Interested in Working Together?
             </h2>
-            <p className="text-gray-300 mb-8 text-lg">
-              I'm available for freelance projects and full-time opportunities. 
+            <p className="text-white/90 font-medium mb-8 text-lg max-w-2xl mx-auto">
+              I'm available for freelance projects and full-time opportunities.
               Let's build something amazing!
             </p>
             <Link
               href="/#contact"
-              className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full hover:scale-105 transition-transform"
+              className="inline-block px-8 py-4 bg-white text-accent-2 font-black text-lg rounded-xl border-4 border-transparent hover:border-white shadow-lg hover:scale-105 transition-all"
             >
               Get In Touch
             </Link>
