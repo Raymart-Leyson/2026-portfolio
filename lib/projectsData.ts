@@ -14,7 +14,17 @@ export interface Project {
 }
 
 export const projectsData: Project[] = [
-  // Learning Tools
+  // High Impact / Featured Projects
+  {
+    id: "dealvault",
+    title: "DealVault",
+    description: "Secure escrow payment platform enabling safe transactions between buyers and sellers. Integrated with PayMongo for payment processing, featuring dispute resolution and automated fund release mechanisms.",
+    category: "Payment Tools",
+    tags: ["Next.js", "PayMongo API", "PostgreSQL", "Authentication", "Payment Processing"],
+    link: "https://deal-vault-liard.vercel.app/",
+    status: "live",
+    featured: true,
+  },
   {
     id: "studygen",
     title: "StudyGen",
@@ -25,8 +35,112 @@ export const projectsData: Project[] = [
     status: "live",
     featured: true,
   },
+  {
+    id: "pasabi-rewards",
+    title: "Pasabi Loyalty & Rewards",
+    description: "Customer loyalty and referral platform designed for small businesses. Features digital loyalty cards, QR scan-to-collect functionality, and a seamless onboarding flow for both users and business owners.",
+    category: "Business Tools",
+    tags: ["Next.js", "React", "Tailwind CSS", "QR Code", "Loyalty System"],
+    link: "https://www.pasabi.online",
+    status: "live",
+    featured: true,
+  },
+  {
+    id: "5s-methodology-api",
+    title: "5S Methodology API",
+    description: "Enterprise-grade RESTful API built with ASP.NET Core for workplace organization data management. Features comprehensive CRUD operations, data validation, and 90%+ unit test coverage ensuring production reliability and scalability.",
+    category: "API Development",
+    tags: ["ASP.NET Core", "C#", "xUnit", "SQL Server", "REST API"],
+    link: "",
+    github: "https://github.com/Raymart-Leyson",
+    status: "live",
+    featured: true,
+  },
+  {
+    id: "rnlstudio",
+    title: "RNLStudio",
+    description: "Freelance studio website showcasing services, projects, and contact. Built with a highly animated, modern Next.js UI to highlight client work and capabilities.",
+    category: "Landing Page",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    link: "https://www.rnlstudio.online/",
+    status: "live",
+    featured: true,
+  },
 
-  // Landing Pages
+  // Complex Web Apps & Business Tools
+  {
+    id: "rnl-mini-pos",
+    title: "RNL Mini POS",
+    description: "Lightweight point-of-sale web app for small businesses. Access is gated and requires a license key to view the live demo.",
+    category: "Business Tools",
+    tags: ["Next.js", "React", "POS", "GCash"],
+    link: "https://rnl-mini-pos.vercel.app/",
+    status: "beta",
+    featured: false,
+    licenseRequired: true,
+  },
+  {
+    id: "3s-methodology-fullstack",
+    title: "3S Methodology FullStack App",
+    description: "Full-stack web application integrating computer vision and .NET for workplace organization management. Features user authentication, real-time data processing, and comprehensive dashboard for 3S methodology tracking.",
+    category: "Full Stack",
+    tags: ["ASP.NET Core", "Computer Vision", "React", "SQL Server", "Authentication"],
+    link: "https://3s-citu.netlify.app/",
+    status: "beta",
+    featured: false,
+  },
+  {
+    id: "order-tracker-profit",
+    title: "Order Tracker Profit",
+    description: "Comprehensive business management tool for tracking orders, calculating profits, and managing inventory for small businesses. Features real-time analytics and MongoDB database integration.",
+    category: "Business Tools",
+    tags: ["React", "MongoDB", "Node.js", "Express", "Charts.js"],
+    link: "https://rnl-ordertracker.vercel.app/",
+    status: "live",
+    featured: false,
+  },
+
+  // Professional Landing Pages & Client Work
+  {
+    id: "rnl-pro-hauling",
+    title: "RNL Pro Hauling",
+    description: "Professional hauling and logistics landing page showcasing services, fleet, and contact. Built for lead generation with clear CTAs and mobile-first design.",
+    category: "Landing Page",
+    tags: ["Next.js", "Tailwind CSS", "Responsive", "SEO"],
+    link: "https://rnl-pro-hauling.vercel.app/",
+    status: "live",
+    featured: false,
+  },
+  {
+    id: "rnl-burger",
+    title: "RNL Burger Joint",
+    description: "Modern restaurant landing page template featuring a mouth-watering hero section, menu highlights with pricing, and an integrated reservation booking form. Designed with strong typography and appetizing visuals.",
+    category: "Landing Page",
+    tags: ["React", "Next.js", "Tailwind CSS", "UI Design"],
+    link: "https://burger-template-tau.vercel.app",
+    status: "live",
+    featured: false,
+  },
+  {
+    id: "olaf-rathmann",
+    title: "Olaf Rathmann Services",
+    description: "Professional service business website for HVAC and climate control. Features service breakdowns, customer testimonials, and inquiry forms in a clean, trust-building layout.",
+    category: "Landing Page",
+    tags: ["Next.js", "Tailwind CSS", "Local Business", "Lead Gen"],
+    link: "https://olaf-rathmann.vercel.app",
+    status: "live",
+    featured: false,
+  },
+  {
+    id: "marci-metzger",
+    title: "Marci Metzger Real Estate",
+    description: "Real estate agent portfolio featuring property listings, photo galleries, and service details. Built to establish professional presence and capture leads for luxury property sales.",
+    category: "Landing Page",
+    tags: ["Next.js", "Tailwind CSS", "Real Estate", "Portfolio"],
+    link: "https://murex-nine.vercel.app",
+    status: "live",
+    featured: false,
+  },
   {
     id: "jazzy-flower-shop",
     title: "Jazzy Flower Shop",
@@ -67,87 +181,18 @@ export const projectsData: Project[] = [
     status: "beta",
     featured: false,
   },
-
   {
-    id: "rnl-pro-hauling",
-    title: "RNL Pro Hauling",
-    description: "Professional hauling and logistics landing page showcasing services, fleet, and contact. Built for lead generation with clear CTAs and mobile-first design.",
+    id: "morosa-construction",
+    title: "Morosa Construction",
+    description: "Landing page for Morosa Construction showcasing services, past projects, contact details, and company information.",
     category: "Landing Page",
-    tags: ["Next.js", "Tailwind CSS", "Responsive", "SEO"],
-    link: "https://rnl-pro-hauling.vercel.app/",
-    status: "live",
-    featured: false,
-  },
-  {
-    id: "rnl-mini-pos",
-    title: "RNL Mini POS",
-    description: "Lightweight point-of-sale web app for small businesses. Access is gated and requires a license key to view the live demo.",
-    category: "Business Tools",
-    tags: ["Next.js", "React", "POS", "GCash"],
-    link: "https://rnl-mini-pos.vercel.app/",
-    status: "beta",
-    featured: false,
-    licenseRequired: true,
-  },
-
-  // Portfolio / Business Site
-  {
-    id: "rnlstudio",
-    title: "RNLStudio",
-    description: "Freelance studio website showcasing services, projects, and contact. Built with a highly animated, modern Next.js UI to highlight client work and capabilities.",
-    category: "Landing Page",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    link: "https://www.rnlstudio.online/",
-    status: "live",
-    featured: true,
-  },
-
-  // Payment Tools
-  {
-    id: "dealvault",
-    title: "DealVault",
-    description: "Secure escrow payment platform enabling safe transactions between buyers and sellers. Integrated with PayMongo for payment processing, featuring dispute resolution and automated fund release mechanisms.",
-    category: "Payment Tools",
-    tags: ["Next.js", "PayMongo API", "PostgreSQL", "Authentication", "Payment Processing"],
-    link: "https://deal-vault-liard.vercel.app/",
-    status: "live",
-    featured: true,
-  },
-
-  // Business Tools
-  {
-    id: "order-tracker-profit",
-    title: "Order Tracker Profit",
-    description: "Comprehensive business management tool for tracking orders, calculating profits, and managing inventory for small businesses. Features real-time analytics and MongoDB database integration.",
-    category: "Business Tools",
-    tags: ["React", "MongoDB", "Node.js", "Express", "Charts.js"],
-    link: "https://rnl-ordertracker.vercel.app/",
-    status: "live",
-    featured: false,
-  },
-
-  // Academic/Professional Projects
-  {
-    id: "5s-methodology-api",
-    title: "5S Methodology API",
-    description: "Enterprise-grade RESTful API built with ASP.NET Core for workplace organization data management. Features comprehensive CRUD operations, data validation, and 90%+ unit test coverage ensuring production reliability and scalability.",
-    category: "API Development",
-    tags: ["ASP.NET Core", "C#", "xUnit", "SQL Server", "REST API"],
-    link: "",
-    github: "https://github.com/Raymart-Leyson",
-    status: "live",
-    featured: true,
-  },
-  {
-    id: "3s-methodology-fullstack",
-    title: "3S Methodology FullStack App",
-    description: "Full-stack web application integrating computer vision and .NET for workplace organization management. Features user authentication, real-time data processing, and comprehensive dashboard for 3S methodology tracking.",
-    category: "Full Stack",
-    tags: ["ASP.NET Core", "Computer Vision", "React", "SQL Server", "Authentication"],
-    link: "https://3s-citu.netlify.app/",
+    tags: ["Next.js", "Vercel", "Landing Page", "Construction"],
+    link: "https://morosa-construction-opc.vercel.app",
     status: "beta",
     featured: false,
   },
+
+  // APIs & Other Projects
   {
     id: "barangay-api",
     title: "Barangay API",
@@ -169,16 +214,6 @@ export const projectsData: Project[] = [
     featured: false,
   },
   {
-    id: "pokemon-website",
-    title: "Pokemon Website V1.0",
-    description: "Interactive Pokemon starter selection website showcasing Pokemon details, stats, and characteristics. Built with React to demonstrate component-based architecture and state management.",
-    category: "Web Development",
-    tags: ["React", "JavaScript", "CSS", "API Integration"],
-    github: "https://github.com/CITUCCS/csit341-react-exercise-2-Raymart-Leyson",
-    status: "beta",
-    featured: false,
-  },
-  {
     id: "6aaeqy-shopify",
     title: "AlphaBeast Peptides Shopify Store",
     description: "E-commerce storefront for AlphaBeast Peptides built on Shopify. Features product listings, shopping cart functionality, and secure checkout process to facilitate online sales of peptide products.",
@@ -189,20 +224,19 @@ export const projectsData: Project[] = [
     featured: false,
   },
   {
-    id: "morosa-construction",
-    title: "Morosa Construction",
-    description: "Landing page for Morosa Construction showcasing services, past projects, contact details, and company information.",
-    category: "Landing Page",
-    tags: ["Next.js", "Vercel", "Landing Page", "Construction"],
-    link: "https://morosa-construction-opc.vercel.app",
+    id: "pokemon-website",
+    title: "Pokemon Website V1.0",
+    description: "Interactive Pokemon starter selection website showcasing Pokemon details, stats, and characteristics. Built with React to demonstrate component-based architecture and state management.",
+    category: "Web Development",
+    tags: ["React", "JavaScript", "CSS", "API Integration"],
+    github: "https://github.com/CITUCCS/csit341-react-exercise-2-Raymart-Leyson",
     status: "beta",
     featured: false,
   },
-  
 ];
 
 // Helper functions
-export const getFeaturedProjects = () => 
+export const getFeaturedProjects = () =>
   projectsData.filter(project => project.featured);
 
 export const getProjectsByCategory = (category: string) =>
