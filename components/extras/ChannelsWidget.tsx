@@ -10,6 +10,12 @@ const channels = [
         icon: "📺",
     },
     {
+        name: "Yex",
+        url: "https://www.youtube.com/@yexsofine",
+        color: "#9C27B0", // Purple for variety
+        icon: "✨",
+    },
+    {
         name: "Spicy Rants",
         url: "https://www.youtube.com/@SpicyRants",
         color: "#FF4500",
